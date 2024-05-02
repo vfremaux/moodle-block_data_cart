@@ -1,0 +1,28 @@
+<!-- block_data_cart/list-reloaded -->
+<table class="">
+{{^datarecords}}
+   <tr>
+      <td>
+        {{#str}}norecords, block_data_cart{{/str}}
+      </td>
+   </tr>
+{{/datarecords}}
+{{#datarecords}}
+   <tr>
+      <td>
+        <a href="{{{recordurl}}}">{{{datarecordname}}}</a>
+      </td>
+      <td>
+        <i data-recordid="{{id}}" class="btn btn-secondary fa fa-trash datacart-delete" />
+      </td>
+   </tr>
+{{/datarecords}}
+</table>
+<center>
+{{#hasdatarecords}}
+<a href="{{{exporturl}}}"><button class="btn btn-primary" name="exportcart">{{#str}}export, block_data_cart{{/str}}</button></a>
+{{#anonymize}}<a href="{{{anonexporturl}}}"><button class="btn btn-primary" name="exportcart">{{#str}}anonexport, block_data_cart{{/str}}</button></a>{{/anonymize}}
+<button id="datacart-reset" class="btn btn-primary" name="resetcart">{{#str}}reset, block_data_cart{{/str}}</button>
+{{/hasdatarecords}}
+</center>
+<!-- /block_data_cart/list-reloaded -->
