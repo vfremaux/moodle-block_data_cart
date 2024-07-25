@@ -14,26 +14,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Javascript controller for controlling the sections.
+ * Javascript controller for controlling the datacart GUI.
  *
- * @module     block_multicourse_navigation/collapse_control
- * @package    block_multicourse_navigation
+ * @module     block_datacart/datacart
+ * @package    block_datacart
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 // jshint unused: true, undef:true
 define(['jquery', 'core/log', 'core/config'], function ($, log, cfg) {
 
-    var datacart = {
+    var blockdatacart = {
 
         blockid: 0,
 
         init: function (params) {
-            datacart.blockid = params[0];
+            blockdatacart.blockid = params[0];
             // Use defered binding.
             $('.datacart-list').on('click', '.datacart-delete', this.remove_record);
             $('.datacart-list').on('click', '#datacart-reset', this.reset_list);
 
-            log.debug("AMD block data cart " + datacart.blockid + " initialized !")
+            log.debug("AMD block data cart " + blockdatacart.blockid + " initialized !");
         },
 
         /**
@@ -44,12 +44,12 @@ define(['jquery', 'core/log', 'core/config'], function ($, log, cfg) {
 
             var url = cfg.wwwroot + '/blocks/data_cart/ajax/service.php';
             url += '?what=addrecord';
-            url += '&blockid=' + datacart.blockid;
+            url += '&blockid=' + blockdatacart.blockid;
             url += '&recordid=' + recordid;
 
             $.get(url);
 
-            datacart.reload_list();
+            blockdatacart.reload_list();
         },
 
         /**
@@ -63,12 +63,12 @@ define(['jquery', 'core/log', 'core/config'], function ($, log, cfg) {
 
             url = cfg.wwwroot + '/blocks/data_cart/ajax/service.php';
             url += '?what=removerecord';
-            url += '&blockid=' + datacart.blockid;
+            url += '&blockid=' + blockdatacart.blockid;
             url += '&recordid=' + that.attr('data-recordid');
 
             $.get(url);
 
-            datacart.reload_list();
+            blockdatacart.reload_list();
         },
 
         /**
@@ -83,26 +83,26 @@ define(['jquery', 'core/log', 'core/config'], function ($, log, cfg) {
 
             url = cfg.wwwroot + '/blocks/data_cart/ajax/service.php';
             url += '?what=reset';
-            url += '&blockid=' + datacart.blockid;
+            url += '&blockid=' + blockdatacart.blockid;
 
             $.get(url);
 
-            datacart.reload_list();
+            blockdatacart.reload_list();
         },
 
         reload_list: function() {
 
             var url = cfg.wwwroot + '/blocks/data_cart/ajax/service.php';
             url += '?what=reload';
-            url += '&blockid=' + datacart.blockid;
+            url += '&blockid=' + blockdatacart.blockid;
 
             $.get(url, function(data) {
-                $('#listcontent-block-' + datacart.blockid).html(data);
+                $('#listcontent-block-' + blockdatacart.blockid).html(data);
             }, 'html');
         }
 
     };
 
-    return datacart;
+    return blockdatacart;
 });
 

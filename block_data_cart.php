@@ -64,7 +64,7 @@ class block_data_cart extends block_base {
         $params = ['blockid' => $this->instance->id, 'id' => $COURSE->id, 'attachments' => 1];
         $template->exporturl = new moodle_url('/blocks/data_cart/export.php', $params);
 
-        if ($this->config->anonymize) {
+        if (!empty($this->config->anonymize)) {
             $template->anonymize = true;
             $params = ['blockid' => $this->instance->id, 'id' => $COURSE->id, 'anon' => 1];
             $template->anonexporturl = new moodle_url('/blocks/data_cart/export.php', $params);
@@ -92,7 +92,7 @@ class block_data_cart extends block_base {
         return $this->content;
     }
 
-    function content_is_trusted() {
+    public function content_is_trusted() {
         return true;
     }
 
@@ -258,7 +258,7 @@ class block_data_cart extends block_base {
      * @param object $datarec the data record
      * @param string $listfields list of fields from block instance config.
      */
-    protected function get_record_name($datarec, $listfields) {
+    public function get_record_name($datarec, $listfields) {
         global $DB;
 
         if (empty($listfields)) {

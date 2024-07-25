@@ -89,8 +89,10 @@ else if ($action == 'reset') {
             $datarec = $DB->get_record('data_records', ['id' => $c->datarecordid]);
             $rectpl->id = $c->datarecordid;
             $u = $DB->get_record('user', ['id' => $datarec->userid]);
-            $rectpl->firstname = $u->firstname;
-            $rectpl->lastname = $u->lastname;
+            $rectpl->datarecordname = $u->firstname.' '.$u->lastname;
+            if (!empty($theblock->config->listfields)) {
+                $rectpl->datarecordname = $theblock->get_record_name($datarec, $theblock->config->listfields);
+            }
             $rectpl->recordurl = new moodle_url('/mod/data/view.php', ['rid' => $c->datarecordid]);
             $template->datarecords[] = $rectpl; 
             $template->hasdatarecords = true;

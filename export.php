@@ -54,8 +54,8 @@ if (empty($cart)) {
     throw new coding_exception("This should not happen unless reloading an export url with an emptied cart");
 }
 
-$ziparchiver = new tgz_packer();
-// $ziparchiver = new zip_packer();
+// $ziparchiver = new tgz_packer();
+$ziparchiver = new zip_packer();
 
 $exportid = uniqid();
 $tempdir = make_temp_directory('data_cart/exports');
