@@ -24,14 +24,14 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2023102000;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2025011400;        // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2022112801;        // Requires this Moodle version
 $plugin->component = 'block_data_cart';      // Full name of the plugin (used for diagnostics)
 $plugin->maturity = MATURITY_RC;
-$plugin->release = '4.1.0 (build 2023102000)';
-$plugin->supported = [401, 402];
+$plugin->release = '4.5.0 (build 2023102000)';
+$plugin->supported = [403, 405];
 
 // Non moodle attributes.
-$plugin->codeincrement = '4.1.0000';
+$plugin->codeincrement = '4.5.0000';
 
 
